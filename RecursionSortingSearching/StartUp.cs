@@ -6,7 +6,10 @@ namespace RecursionSortingSearching
     {
         static void Main(string[] args)
         {
-            Recursion.GenerateCombinationsWithRepetition(new[] { 1, 2, 3, 4, 5 }, 3);
+            // Combinatorics.GenerateCombinationsWithRepetition(new[] { 1, 2, 3, 4, 5 }, 3);
+            // Console.WriteLine(Recursion.Fibonacci(1000));
+            // EightQueensProblem.Solve();
+            LabyrinthPaths.Solve();
         }
     }
 }
