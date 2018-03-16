@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Net.Sockets;
 using System.Text;
 
 namespace RecursionSortingSearching
@@ -86,7 +85,6 @@ namespace RecursionSortingSearching
 
             bool DiagonalsContainQueen()
             {
-
                 return UpperLeftDiagonalContainsQueen()
                        || UpperRightDiagonalContainsQueen()
                        || LowerLeftDiagonalContainsQueen()
@@ -125,7 +123,7 @@ namespace RecursionSortingSearching
                 bool LowerLeftDiagonalContainsQueen()
                 {
                     int counter = 1;
-                    while (row + counter < BoardLength  && col - counter >= 0)
+                    while (row + counter < BoardLength && col - counter >= 0)
                     {
                         if (board[row + counter, col - counter] == 1)
                         {
@@ -140,7 +138,7 @@ namespace RecursionSortingSearching
                 bool LowerRightDiagonalContainsQueen()
                 {
                     int counter = 1;
-                    while (row + counter < BoardLength  && col + counter < BoardLength)
+                    while (row + counter < BoardLength && col + counter < BoardLength)
                     {
                         if (board[row + counter, col + counter] == 1)
                         {

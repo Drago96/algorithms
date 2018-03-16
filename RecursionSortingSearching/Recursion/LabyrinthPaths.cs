@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
 
 namespace RecursionSortingSearching
@@ -12,7 +10,7 @@ namespace RecursionSortingSearching
         public static void Solve()
         {
             ReadLabyrinth();
-            FindPaths(0,0);
+            FindPaths(0, 0);
         }
 
         private static void ReadLabyrinth()
@@ -32,17 +30,25 @@ namespace RecursionSortingSearching
             {
                 return;
             }
+
             if (labyrinth[row][col] == 'e')
             {
                 PrintLabyrinth();
                 return;
             }
 
-            labyrinth[row][col] = 'X';
-            FindPaths(row+1,col);
-            FindPaths(row-1,col);
-            FindPaths(row, col+1);
-            FindPaths(row, col-1);
+            labyrinth[row][col] = 'D';
+            FindPaths(row + 1, col);
+
+            labyrinth[row][col] = 'U';
+            FindPaths(row - 1, col);
+
+            labyrinth[row][col] = 'R';
+            FindPaths(row, col + 1);
+
+            labyrinth[row][col] = 'L';
+            FindPaths(row, col - 1);
+
             labyrinth[row][col] = '-';
         }
 
@@ -61,7 +67,7 @@ namespace RecursionSortingSearching
         private static bool IsForbidden(int row, int col)
         {
             return row < 0 || col < 0 || row >= labyrinth.Length || col >= labyrinth[0].Length
-                   || labyrinth[row][col] == 'X' || labyrinth[row][col] == '*';
+                   || (labyrinth[row][col] != 'e' && labyrinth[row][col] != '-');
         }
     }
 }

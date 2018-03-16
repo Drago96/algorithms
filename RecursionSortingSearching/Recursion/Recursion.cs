@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 
 namespace RecursionSortingSearching
@@ -28,7 +27,7 @@ namespace RecursionSortingSearching
 
         public static long Fibonacci(int n)
         {
-            Dictionary<int, long> fibNumbers = new Dictionary<int, long> {{1, 1}, {2, 1}};
+            Dictionary<int, long> fibNumbers = new Dictionary<int, long> { { 1, 1 }, { 2, 1 } };
 
             return GetFibbonaci(n);
 
