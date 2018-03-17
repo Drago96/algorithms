@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Text;
 
-namespace RecursionSortingSearching
+namespace RecursionSortingSearching.Recursion
 {
     public static class LabyrinthPaths
     {

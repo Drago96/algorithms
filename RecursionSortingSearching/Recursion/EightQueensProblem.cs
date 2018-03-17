@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace RecursionSortingSearching
+namespace RecursionSortingSearching.Recursion
 {
     public static class EightQueensProblem
     {
@@ -11,6 +11,8 @@ namespace RecursionSortingSearching
         private static readonly int[,] board;
         private static readonly HashSet<int> attackedRows;
         private static readonly HashSet<int> attackedCols;
+        private static readonly HashSet<int> attackedRightDiagonals;
+        private static readonly HashSet<int> attackedLeftDiagonals;
 
         private static int solutionsCounter;
 
@@ -19,6 +21,8 @@ namespace RecursionSortingSearching
             board = new int[BoardLength, BoardLength];
             attackedRows = new HashSet<int>();
             attackedCols = new HashSet<int>();
+            attackedRightDiagonals = new HashSet<int>();
+            attackedLeftDiagonals = new HashSet<int>();
             solutionsCounter = 0;
         }
 
@@ -52,6 +56,8 @@ namespace RecursionSortingSearching
             board[row, col] = 0;
             attackedCols.Remove(col);
             attackedRows.Remove(row);
+            attackedRightDiagonals.Remove(row + col);
+            attackedLeftDiagonals.Remove(row - col);
         }
 
         private static void MarkCell(int row, int col)
@@ -59,6 +65,8 @@ namespace RecursionSortingSearching
             board[row, col] = 1;
             attackedCols.Add(col);
             attackedRows.Add(row);
+            attackedRightDiagonals.Add(row + col);
+            attackedLeftDiagonals.Add(row - col);
         }
 
         private static void PrintSolution()
@@ -81,75 +89,8 @@ namespace RecursionSortingSearching
 
         private static bool CanPlaceQueen(int row, int col)
         {
-            return (!attackedCols.Contains(col) && !attackedRows.Contains(row)) && !DiagonalsContainQueen();
-
-            bool DiagonalsContainQueen()
-            {
-                return UpperLeftDiagonalContainsQueen()
-                       || UpperRightDiagonalContainsQueen()
-                       || LowerLeftDiagonalContainsQueen()
-                       || LowerRightDiagonalContainsQueen();
-
-                bool UpperLeftDiagonalContainsQueen()
-                {
-                    int counter = 1;
-                    while (row - counter >= 0 && col - counter >= 0)
-                    {
-                        if (board[row - counter, col - counter] == 1)
-                        {
-                            return true;
-                        }
-                        counter++;
-                    }
-
-                    return false;
-                }
-
-                bool UpperRightDiagonalContainsQueen()
-                {
-                    int counter = 1;
-                    while (row - counter >= 0 && col + counter < BoardLength)
-                    {
-                        if (board[row - counter, col + counter] == 1)
-                        {
-                            return true;
-                        }
-                        counter++;
-                    }
-
-                    return false;
-                }
-
-                bool LowerLeftDiagonalContainsQueen()
-                {
-                    int counter = 1;
-                    while (row + counter < BoardLength && col - counter >= 0)
-                    {
-                        if (board[row + counter, col - counter] == 1)
-                        {
-                            return true;
-                        }
-                        counter++;
-                    }
-
-                    return false;
-                }
-
-                bool LowerRightDiagonalContainsQueen()
-                {
-                    int counter = 1;
-                    while (row + counter < BoardLength && col + counter < BoardLength)
-                    {
-                        if (board[row + counter, col + counter] == 1)
-                        {
-                            return true;
-                        }
-                        counter++;
-                    }
-
-                    return false;
-                }
-            }
+            return !attackedCols.Contains(col) && !attackedRows.Contains(row) &&
+                !attackedRightDiagonals.Contains(row + col) && !attackedLeftDiagonals.Contains(row - col);
         }
     }
 }

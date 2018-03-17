@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq;
 
-namespace RecursionSortingSearching
+namespace RecursionSortingSearching.Recursion
 {
     public static class Combinatorics
     {
