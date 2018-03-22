@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace RecursionSortingSearching.Recursion
@@ -123,6 +124,43 @@ namespace RecursionSortingSearching.Recursion
                     vector[index] = numbersSet[i];
                     GeneratePermutations(vector, index + 1,
                         numbersSet.Take(i).Concat(numbersSet.Skip(i + 1)).ToArray());
+                }
+            }
+        }
+
+        public static void SwapPermutations(int[] set)
+        {
+
+            SwapPermutations(0);
+
+            void SwapPermutations(int index)
+            {
+                if (index == set.Length)
+                {
+                    Console.WriteLine(string.Join("", set));
+                    return;
+                }
+
+                SwapPermutations(index + 1);
+
+                HashSet<int> swapped = new HashSet<int> {set[index]};
+
+                for (int i = index + 1; i < set.Length; i++)
+                {
+                    if (!swapped.Contains(set[i]))
+                    {
+                        Swap(i, index);
+                        SwapPermutations(index + 1);
+                        Swap(i, index);
+                        swapped.Add(set[i]);
+                    }
+                }
+
+                void Swap(int firstIndex, int secondIndex)
+                {
+                    int temp = set[firstIndex];
+                    set[firstIndex] = set[secondIndex];
+                    set[secondIndex] = temp;
                 }
             }
         }
