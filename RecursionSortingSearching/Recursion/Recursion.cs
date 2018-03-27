@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace RecursionSortingSearching.Recursion
@@ -43,6 +44,23 @@ namespace RecursionSortingSearching.Recursion
                 fibNumbers.Add(i, fibNumber);
 
                 return fibNumber;
+            }
+        }
+
+        public static void ReverseArray(int[] arr)
+        {
+
+            ReverseArray(0);
+
+            void ReverseArray(int index)
+            {
+                if (index == arr.Length)
+                {
+                    return;
+                }
+
+                ReverseArray(index + 1);
+                Console.WriteLine(arr[index]);
             }
         }
     }

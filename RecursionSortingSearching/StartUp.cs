@@ -10,7 +10,9 @@ namespace RecursionSortingSearching
             // Console.WriteLine(Recursion.Fibonacci(1000));
             // EightQueensProblem.Solve();
             // LabyrinthPaths.Solve();
-            Combinatorics.SwapPermutations(new[] { 3, 3, 2, 1, 3, 3 });
+            // Combinatorics.SwapPermutations(new[] { 3, 3, 2, 1, 3, 3 });
+            // TowerOfHanoi.Solve(3);
+            ConnectedAreas.Solve(new []{new []{' ', ' ', ' ', '*', ' ', ' ', ' '}});
 
             //int[] arr = MergeSort<int>.Sort(new[] { 3, 2, 1 });
             //Console.WriteLine(string.Join(" ", arr));
